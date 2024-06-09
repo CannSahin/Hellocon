@@ -1,0 +1,144 @@
+body {
+    background-image:  url("../images/chtwlp.jpg");
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    position: relative;
+    place-items: center;
+    margin-top: 2rem;
+}
+
+#app-name {
+    color: rgb(234, 237, 246);
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+nav {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    color: azure;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: #FEB5B4;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+footer {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    background-color: #FEB5B4;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+  
+
+#user-buttons {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+  
+.sidebar a:hover {
+    color: #eae8f5;
+}
+
+#sidebar-label {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    font-size: 1.4rem;
+}
+
+#sidebar-label:hover {
+    color: #f1f1f1;
+
+}
+
+#sidebar-friend-name, #sidebar-room-name {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    margin-left: 10px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+#sidebar-friend-name:hover, #sidebar-room-name:hover {
+    color: #111;
+    font-size: 1.2rem;
+    background-color: #f1f1f1;
+    margin-left: 10px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+  
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+}
+  
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+  
+.openbtn:hover {
+    background-color: #444;
+}
+
+.fa-solid {
+    font-size: 26px;
+}
+
+.fa-solid[data-count]:after {
+    content: attr(data-count);
+    font-size: 36%;
+    padding: .6em;
+    border-radius: 999px;
+    line-height: .75em;
+    color: white;
+    background: rgba(255, 0, 0, .85);
+    text-align: center;
+    min-width: 2em;
+    font-weight: bold;
+}

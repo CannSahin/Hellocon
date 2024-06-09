@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Welcome | {% endblock %}
+
+{% block css_files %} <link rel="stylesheet" href="{% static 'core/frontpage.css' %}"> {% endblock %}
+
+{% block content %}
+
+
+<div class="flex items-center justify-center max-h-screen ">
+	<a href="/"><img src="{% static 'images/logo.svg' %}" alt="HelloCon Logo" class="h-32 w-auto"></a>
+</div>
+{% if request.user.is_authenticated %}
+
+<div class="room-action">
+    <a class="dropdown-btn" onclick="toggleDropdown()" id="new-room">Create New Chatroom</a>
+
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<form action="/rooms/new_room/" method="post">
+				{% csrf_token %}
+				<h2 id="create-room-heading">Create New Room</h2>
+				<div class="form-field">
+					<label for="room_name">Your Chatroom Name</label>
+					<input type="text" id="room_name" name="room_name">
+				</div>
+				
+				<div class="form-field">
+					<label for="room_desc">About Your Chatroom</label>
+					<textarea type="text" name="room_desc" id="room_desc"></textarea>
+				</div>
+
+				<div class="form-field">
+					<label for="is_public">Make Room Public?</label>
+					<input type="checkbox" name="is_public" id="is_public">
+				</div>
+
+				<button type="submit" id="create-room-btn" >Create!</button>
+			</form>
+		</div>
+    
+    </div>
+
+    <a id="rooms" href="{% url 'search' %}">Search Chatroom/Users</a>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/frontpage.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,285 @@
+.room-heading {
+    text-align: center;
+}
+
+#room-desc {
+    font-size: 3.75rem;
+    width: fit-content;
+    color: white;
+    transition: 0.3s;
+    height: 6rem;
+}
+
+.about-room-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    border-radius:5px;
+}
+
+.modal-content {
+    background-color: rgb(247, 244, 249);
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 20rem;
+    border-radius:10px;
+    color: black;
+    height: 25rem;
+    text-align: justify;
+}
+
+.participants-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    border-radius:5px;
+}
+
+.modal-content {
+    background-color: rgb(247, 244, 249);
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #888;
+    width: 20rem;
+    border-radius:10px;
+    color: black;
+    height: 25rem;
+    text-align: justify;
+}
+
+.desc-label {
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+#add-participant {
+    margin-left: 3rem;
+    transition: 0.3s;
+    padding: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+    border-radius: 5px;
+}
+
+#add-participant:active,
+#add-participant:hover {
+    background-color: #7a55cb;
+    color: white;
+}
+
+.participant {
+    color: rgb(88, 12, 159);
+    background-color: rgb(237, 228, 244);
+    padding: 3px;
+    padding-left: 5px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#modal-heading {
+    background-color: rgb(88, 12, 159);
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    border-radius: 7px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 1.5rem;
+}
+
+#room-desc-text {
+    background-color: rgb(88, 12, 159);
+    color: white;
+    padding: 5px;
+    height: fit-content;
+    font-style: italic;
+    margin-bottom: 1rem;
+    border-radius: 7px;
+}
+
+#participants-list {
+    background-color: rgb(88, 12, 159);
+    color: white;
+    padding: 5px;
+    height: fit-content;
+    font-style: italic;
+    margin-bottom: 1rem;
+    border-radius: 7px;
+    margin-top: 0.3rem;
+}
+
+#you {
+    margin-left: 8rem;
+    color: #888;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chat-messages-container {
+    width: 50%; /* Equivalent to lg:w-2/4 on large screens */
+    margin: 1rem; /* Equivalent to mx-4 */
+    padding: 1rem; /* Equivalent to p-4 */
+    background-color: #ffffff; /* Equivalent to bg-white */
+    border-radius: 1.5rem; /* Equivalent to rounded-xl */
+}
+
+.chat-msg {
+    margin-left: 1rem;
+}
+
+.chat-user-icon {
+    align-items: center;
+    font-size: 2rem !important;
+}
+
+
+#chat-message {
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+
+#chat-msg-input {
+    word-wrap: break-word;
+    text-wrap: wrap;
+}
+
+.chat-messages > * {
+    margin-bottom: 0.75rem; /* Equivalent to space-y-3 */
+}
+
+.chat-message-box {
+    padding: 1rem; /* Equivalent to p-4 */
+    background-color: #e5e5e5; /* Equivalent to bg-gray-200 */
+    border-radius: 1.5rem; /* Equivalent to rounded-xl */
+    display: flex;
+}
+
+.chat-msg-input-container{
+    width: 50%; /* Equivalent to lg:w-2/4 on large screens */
+    margin: 1rem; /* Equivalent to mx-4 */
+    padding: 1rem; /* Equivalent to p-4 */
+    background-color: #ffffff; /* Equivalent to bg-white */
+    border-radius: 1.5rem;
+}
+
+#chat-msg-send{
+    padding: 0.75rem 1.25rem; /* Equivalent to py-3 px-5 */
+    border-radius: 1rem; /* Equivalent to rounded-xl */
+    color: #ffffff; /* Equivalent to text-white */
+    background-color: #ae8ff2; /* Equivalent to bg-teal-600 */
+    transition: background-color 0.3s ease; /* Hover transition */
+
+    &:hover {
+        background-color: #916ae6; /* Equivalent to hover:bg-teal-700 */
+    }
+}
+
+#join-room {
+    margin-top: 4rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#join-room-btn {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    border: 2px white solid;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+}
+
+#join-room-btn:hover,
+#join-room-btn:active{
+    background-color: white;
+    color: #916ae6;
+}
+  
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+#add-participant-to-room {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 2px dashed white;
+}
+
+#add-participant-name {
+    border-radius: 5px;
+    color: #000;
+    margin-right: 1rem;
+}
+
+#icon1, #icon2 {
+    color: #ffffff;
+    margin: 1rem;
+    transition: 0.5s;
+}
+
+#icon1:hover,
+#icon1:active {
+    font-size: 2rem !important;
+}
+
+#icon2:hover,
+#icon2:active {
+    font-size: 2rem !important;
+}
+
+#add-as-friend {
+    font-size: 1rem;
+    color: #29b03b;
+    margin-left: 4rem;
+}
+
+#add-as-friend:hover,
+#add-as-friend:active {
+    font-size: 1rem;
+    color: #1f7e2b;
+    margin-left: 4rem;
+}
+
+@media (min-width: 1024px) {
+
+    .chat-messages-container {
+        margin-left: auto; /* Equivalent to lg:mx-auto on large screens */
+        margin-right: auto; /* Equivalent to lg:mx-auto on large screens */
+    }
+
+    .chat-msg-input-container{
+        margin-left: auto; /* Equivalent to lg:mx-auto on large screens */
+        margin-right: auto; 
+    }
+}
