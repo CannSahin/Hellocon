@@ -1,3 +1,3 @@
 # hello!con
-## hocam uygulama master branch'de oraya gidin lütfen :3
+##bi daha "-f" yapmayın
 Best real chat app ever
