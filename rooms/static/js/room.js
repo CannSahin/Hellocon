@@ -1,27 +1,3 @@
-function updateBellCount(count) {
-    const bellCount = document.getElementById('bellCount');
-    if (bellCount) {
-        // Sayacı güncelle
-        bellCount.dataset.count = count;
-        // Kullanıcıya bildirim sayısını göster
-        bellCount.innerText = count > 0 ? count : '';
-    }
-}
-
-async function updateUnseenMessageCount() {
-    try {
-        const response = await fetch('/rooms/get_unseen_message_count/');
-        if (!response.ok) {
-            throw new Error('Failed to fetch unseen message count');
-        }
-        const data = await response.json();
-        console.log("unseendata:"+data)
-        const unseenMessageCount = data.unseen_message_count;
-        updateBellCount(unseenMessageCount);
-    } catch (error) {
-        console.error('Error fetching unseen message count:', error);
-    }
-}
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const roomNameElement = document.getElementById('json-roomname');
@@ -29,11 +5,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const userName = JSON.parse(document.getElementById('json-username').textContent);
     const expiry = JSON.parse(document.getElementById('json-expiry').textContent);
     const messageInput = document.getElementById('chat-msg-input');
+    const bellCount = document.getElementById('bellCount');
 
     const roomName = roomNameElement ? JSON.parse(roomNameElement.textContent) : null;
-    if (!roomName) {
-        updateUnseenMessageCount();
-    }
+   
     const otherUsername = otherUsernameElement ? JSON.parse(otherUsernameElement.textContent) : null;
 
     //const chatEndpoint = roomName ? 'ws://' + window.location.host + '/ws/' + roomName + '/' : 'ws://' + window.location.host + '/ws/userchat/' + otherUsername + '/';
@@ -57,10 +32,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             let hm = '<div class="chat-message-box"><div class="chat-user-icon"><i class="fa fa-user-circle" aria-hidden="true" id="user-icon"></i></div><div class="chat-msg"><p class="font-semibold">'+data.username+'</p><p id="chat-message">'+data.message+'</p></div></div>';
             console.log(hm);
             document.querySelector("#chat-messages").innerHTML += hm;
-            scrollToBottom();
-            if (!roomName) {
-                updateUnseenMessageCount();
-            }
+            scrollToBottom();           
         } else {
             alert("Please type something!");
         }
@@ -69,9 +41,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     chatSocket.onclose = function(e) {
         console.log('onclosed');
     };
-
    
-
     document.querySelector('#chat-msg-send').onclick = function(e){
         e.preventDefault();
         const messageInputDom = document.querySelector("#chat-msg-input");
@@ -90,7 +60,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     messageInput.addEventListener('keypress', function (e) {
         if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
+        
             document.querySelector('#chat-msg-send').onclick();
         }
     });

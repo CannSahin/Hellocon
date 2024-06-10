@@ -3,6 +3,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import sync_to_async
 from django.contrib.auth.models import User
 from .models import Message, Room, UserMessages
+from .utils import send_notification
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -82,3 +83,4 @@ class ChatConsumer(AsyncWebsocketConsumer):
         sender = User.objects.get(username=sender_username)
         receiver = User.objects.get(username=receiver_username)
         UserMessages.objects.create(sender_name=sender, receiver_name=receiver, description=message)
+        send_notification(receiver)

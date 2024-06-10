@@ -19,6 +19,49 @@
     </style>
 </head>
 <body>
+    <script>
+        async function getUnseenMessageCount() {
+            return fetch('/rooms/get_unseen_message_count/')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch unseen message count');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("unseendata:", data);
+                    return data.unseen_message_count;
+                })
+                .catch(error => {
+                    console.error('Error fetching unseen message count:', error);
+                    return 0; // Hata durumunda 0 döndür
+                });
+        }
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const userName = '{{ request.user.username }}';
+            console.log("NotifySoket:"+userName+"-")
+            if (userName) {
+
+                getUnseenMessageCount().then(unseenMessageCount => {
+                    bellCount.setAttribute('data-count', unseenMessageCount);
+                });
+                
+                const notificationSocket = new WebSocket(
+                    'ws://' + window.location.host + '/ws/notify/' + userName + '/'
+                );
+                console.log("NotifySoket:"+notificationSocket)
+                notificationSocket.onmessage = function(e) {
+                    const data = JSON.parse(e.data);
+                    bellCount.setAttribute('data-count', data.notification_count);
+                };
+
+                notificationSocket.onclose = function(e) {
+                    console.error('Notification socket closed unexpectedly');
+                };
+            }
+
+        });
+    </script>
     <nav>
         <div id="app-name">
             <a href="/">HelloCon</a>
@@ -42,12 +85,12 @@
         <div id="mySidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
             <a href="/" id="sidebar-label">Home</a>
-            <a id="sidebar-label">Your Friends</a>
+            <a id="sidebar-label">Users</a>
             {% for u in friends %}
                 <h3><a href="{% url 'userchat' u.username %}" id="sidebar-friend-name">{{ u.username }}</a></h3>
             {% endfor %}
             
-            <a id="sidebar-label">Your Groups</a>
+            <a id="sidebar-label">Chat Rooms</a>
             {% for r in rooms %}
                 <h3><a href="{% url 'room' r.room.slug %}" id="sidebar-room-name">{{ r.room.name }}</a></h3>
             {% endfor %}

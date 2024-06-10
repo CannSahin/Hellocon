@@ -12,6 +12,7 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from .utils import send_notification
 
 
 # Create your views here.
@@ -137,6 +138,7 @@ def userchat(request, username):
                 sender_name=current_user,
                 receiver_name=other_user
             )
+            send_notification(other_user)
     
     return render(request, "rooms/userchat.html", context={
         "other_user": other_user,
